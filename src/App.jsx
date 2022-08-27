@@ -1,9 +1,9 @@
-function App() {
+import LandingPage from "./pages/LandingPage";
+
+const App = () => {
   return (
-    <div>
-      <h1>Rebderry PCfy</h1>
-    </div>
+    <LandingPage />
   );
-}
+};
 
 export default App;
