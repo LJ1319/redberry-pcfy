@@ -1,6 +1,12 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "../layout/Navbar";
+
 const InfoPageContent = () => {
   return (
-    <h1>Info Page</h1>
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   );
 };
 
