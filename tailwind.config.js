@@ -4,7 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'helvetica-neue': ['HelveticaNeue']
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-opentype'),
+  ],
 };

@@ -4,11 +4,13 @@ import Navbar from "../components/layout/Navbar";
 
 const InfoPage = () => {
   return (
-    <>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </>
+    <div className="h-screen bg-[#f6f6f6] font-helvetica-neue">
+      <div className="h-auto bg-[#f6f6f6]">
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </div>
+    </div>
   );
 };
 
