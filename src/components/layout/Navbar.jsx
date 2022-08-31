@@ -1,22 +1,32 @@
-import { Link } from "react-router-dom";
 import NavLinkComponent from "./NavLinkComponent";
 
-import Back from "../../img/back.svg";
+import NavBackButton from "./NavBackButton";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  let location = useLocation();
+  let destination;
+
+  switch (location.pathname) {
+    case "/add-info/employee-info":
+      destination = "/";
+      break;
+    case "/add-info/laptop-info":
+      destination = "/";
+      break;
+    default:
+      break;
+  }
+
   return (
     <nav className="flex w-10/12 py-12 mx-auto items-center">
       <div>
-        <Link to="/"  >
-          <button className="w-14 h-14 rounded-full bg-[#D9D9D9]">
-            <img src={Back} alt="back arrow" className="my-5 mx-auto" />
-          </button>
-        </Link>
+        <NavBackButton destination={destination} />
       </div>
 
       <div className="mx-auto">
-        <NavLinkComponent path="employee-info" text="თანამშრომლის ინფო" />
-        <NavLinkComponent path="laptop-info" text="ლეპტოპის მახასიათებლები" />
+        <NavLinkComponent destination="employee-info" text="თანამშრომლის ინფო" />
+        <NavLinkComponent destination="laptop-info" text="ლეპტოპის მახასიათებლები" />
       </div>
     </nav >
   );

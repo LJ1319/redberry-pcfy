@@ -10,8 +10,8 @@ const LandingPage = () => {
       <img src={Landing} alt="" className="my-16 mx-auto" />
 
       <div>
-        <LandingButton path="add-info/employee-info" text="ჩანაწერის დამატება" />
-        <LandingButton path="/" text="ჩანაწერების სია" />
+        <LandingButton destination="add-info/employee-info" text="ჩანაწერის დამატება" />
+        <LandingButton destination="/" text="ჩანაწერების სია" />
       </div>
     </div >
   );

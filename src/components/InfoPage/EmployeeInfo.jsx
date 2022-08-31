@@ -60,7 +60,7 @@ const EmployeeInfo = () => {
           </span>
         </div>
 
-        <NextButton path="/" text="შემდეგი" />
+        <NextButton destination="/add-info/laptop-info" text="შემდეგი" />
       </form >
     </div >
   );
