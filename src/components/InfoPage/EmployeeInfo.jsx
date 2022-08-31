@@ -1,6 +1,8 @@
 import CustomSelect from "../layout/CustomSelect";
 import NextButton from "./NextButton";
 
+import { teams, positions } from "../../data";
+
 const EmployeeInfo = () => {
   return (
     <div className="w-8/12 mx-auto bg-white rounded-lg drop-shadow-2xl">
@@ -31,8 +33,8 @@ const EmployeeInfo = () => {
           </div>
         </div>
 
-        <CustomSelect text="თიმი" />
-        <CustomSelect text="პოზიცია" />
+        <CustomSelect text="თიმი" data={teams} />
+        <CustomSelect text="პოზიცია" data={positions} />
 
         <div className="my-8">
           <label htmlFor="email">მეილი</label>
