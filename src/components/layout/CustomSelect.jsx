@@ -1,40 +1,41 @@
 import { useState } from 'react';
 import ArrowDown from '../../img/arrowdown.svg';
 
+const data = [
+  {
+    id: 1,
+    title: "დეველოპმენტი"
+  },
+  {
+    id: 2,
+    title: "HR"
+  },
+  {
+    id: 3,
+    title: "გაყიდვები"
+  },
+  {
+    id: 4,
+    title: "დიზაინი"
+  },
+  {
+    id: 5,
+    title: "დიზაინი"
+  },
+];
+
 const Select = ({ text }) => {
-
-  const data = [
-    {
-      id: 1,
-      title: "დეველოპმენტი"
-    },
-    {
-      id: 2,
-      title: "HR"
-    },
-    {
-      id: 3,
-      title: "გაყიდვები"
-    },
-    {
-      id: 4,
-      title: "დიზაინი"
-    },
-    {
-      id: 5,
-      title: "დიზაინი"
-    },
-  ];
-
   const [selected, setSelected] = useState('');
   const [isShow, selectOpen] = useState(false);
+
   const show = () => {
     selectOpen(!isShow);
     console.log(isShow);
   };
+
   return (
     <>
-      <div className="flex justify-between my-8 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
+      <div className="flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
         {selected ? selected.title : text}
         <button onClick={show} type="button">
           <img src={ArrowDown} alt="" />
@@ -42,7 +43,7 @@ const Select = ({ text }) => {
       </div>
 
       {isShow &&
-        <ul className="absolute mt-[-30px] z-10 w-8/12 overflow-auto text-lg font-bold bg-white rounded-lg drop-shadow-2xl">
+        <ul className="absolute mt-[-45px] z-10 w-8/12 overflow-auto text-lg font-bold bg-white rounded-lg drop-shadow-2xl">
           {data.map((data) => (
             <li
               key={data.id}
