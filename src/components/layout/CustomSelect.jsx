@@ -34,33 +34,31 @@ const Select = ({ data, text }) => {
 
 
   return (
-    <>
-      <div ref={node} className="flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
-        {selected ? selected.name : text}
-        <button onClick={show} type="button">
-          <img src={ArrowDown} alt="" />
-        </button>
+    <div ref={node} className="relative flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
+      {selected ? selected.name : text}
+      <button onClick={show} type="button">
+        <img src={ArrowDown} alt="" />
+      </button>
 
-        {open &&
-          <ul className="absolute ml-[-10px] mt-10 z-10 w-8/12  h-auto overflow-auto text-lg font-bold bg-white rounded-lg drop-shadow-2xl">
-            {data.map((data) => (
-              <li
-                key={data.id}
-                onClick={() => {
-                  handleChange(data);
-                  setOpen(false);
-                }}
-                className={`${selected.id === data.id ? `bg-[#e7f0f8]` : ''} relative p-2.5 cursor-pointer hover:bg-[#e7f0f8]`}
-              >
-                <span className='block font-normal text-left truncate'>
-                  {data.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-        }
-      </div>
-    </>
+      {open &&
+        <ul className="absolute ml-[-10px] mt-10 z-10 w-full h-auto overflow-auto text-lg font-bold bg-white rounded-lg drop-shadow-2xl">
+          {data.map((data) => (
+            <li
+              key={data.id}
+              onClick={() => {
+                handleChange(data);
+                setOpen(false);
+              }}
+              className={`${selected.id === data.id ? `bg-[#e7f0f8]` : ''} relative p-2.5 cursor-pointer hover:bg-[#e7f0f8]`}
+            >
+              <span className='block font-normal text-left truncate'>
+                {data.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+      }
+    </div>
   );
 };
 
