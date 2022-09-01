@@ -42,7 +42,7 @@ const Select = ({ data, text }) => {
         </button>
 
         {open &&
-          <ul className="absolute ml-[-10px] mt-10 z-10 w-8/12 h-max overflow-auto text-lg font-bold bg-white rounded-lg drop-shadow-2xl">
+          <ul className="absolute ml-[-10px] mt-10 z-10 w-8/12  h-auto overflow-auto text-lg font-bold bg-white rounded-lg drop-shadow-2xl">
             {data.map((data) => (
               <li
                 key={data.id}
@@ -50,7 +50,7 @@ const Select = ({ data, text }) => {
                   handleChange(data);
                   setOpen(false);
                 }}
-                className={`${selected.id === data.id ? `bg-[#e7f0f8]` : ''} relative p-2.5 cursor-default hover:bg-[#e7f0f8]`}
+                className={`${selected.id === data.id ? `bg-[#e7f0f8]` : ''} relative p-2.5 cursor-pointer hover:bg-[#e7f0f8]`}
               >
                 <span className='block font-normal text-left truncate'>
                   {data.name}

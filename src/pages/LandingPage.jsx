@@ -5,7 +5,7 @@ import Landing from "../img/landing.svg";
 
 const LandingPage = () => {
   return (
-    <div className="max-w-max my-16 mx-auto">
+    <div className="w-max my-16 mx-auto font-helvetica-neue">
       <img src={Logo} alt="" className="mx-auto" />
       <img src={Landing} alt="" className="my-16 mx-auto" />
 

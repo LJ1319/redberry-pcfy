@@ -28,7 +28,7 @@ const Navbar = () => {
         <NavLinkComponent destination="employee-info" text="თანამშრომლის ინფო" />
         <NavLinkComponent destination="laptop-info" text="ლეპტოპის მახასიათებლები" />
       </div>
-    </nav >
+    </nav>
   );
 };
 

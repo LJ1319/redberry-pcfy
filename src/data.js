@@ -114,3 +114,73 @@ export const positions = [
     "team_id": 5
   }
 ];
+
+export const brands = [
+  {
+    "id": 1,
+    "name": "HP"
+  },
+  {
+    "id": 2,
+    "name": "Dell"
+  },
+  {
+    "id": 3,
+    "name": "Microsoft"
+  },
+  {
+    "id": 4,
+    "name": "Apple"
+  },
+  {
+    "id": 5,
+    "name": "Lenovo"
+  },
+  {
+    "id": 6,
+    "name": "Acer"
+  }
+];
+
+export const cpus = [
+  {
+    "id": 1,
+    "name": "Intel Core i3"
+  },
+  {
+    "id": 2,
+    "name": "Intel Core i5"
+  },
+  {
+    "id": 3,
+    "name": "Intel Core i7"
+  },
+  {
+    "id": 4,
+    "name": "Intel Core i9"
+  },
+  {
+    "id": 5,
+    "name": "AMD Ryzen 3"
+  },
+  {
+    "id": 6,
+    "name": "AMD Ryzen 5"
+  },
+  {
+    "id": 7,
+    "name": "AMD Ryzen 7"
+  },
+  {
+    "id": 8,
+    "name": "AMD Athlon"
+  },
+  {
+    "id": 9,
+    "name": "Apple M1"
+  },
+  {
+    "id": 10,
+    "name": "Apple M2"
+  }
+];

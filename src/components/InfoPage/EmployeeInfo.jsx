@@ -9,10 +9,10 @@ const EmployeeInfo = () => {
       <form className="w-8/12 mx-auto py-16">
         <div className="flex justify-evenly">
           <div className="mr-10">
-            <label htmlFor="firstName">სახელი</label>
+            <label htmlFor="first-name" className="font-semibold">სახელი</label>
             <input
               type="text"
-              id="firstName"
+              id="first-name"
               placeholder="გრიშა"
               className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
             <span className="text-sm text-[#2e2e2e]">
@@ -21,10 +21,10 @@ const EmployeeInfo = () => {
           </div>
 
           <div className="ml-10">
-            <label htmlFor="lastName">გვარი</label>
+            <label htmlFor="last-name" className="font-semibold">გვარი</label>
             <input
               type="text"
-              id="lastName"
+              id="last-name"
               placeholder="ბაგრატიონი"
               className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
             <span className="text-sm text-[#2e2e2e]">
@@ -37,7 +37,7 @@ const EmployeeInfo = () => {
         <CustomSelect text="პოზიცია" data={positions} />
 
         <div className="my-8">
-          <label htmlFor="email">მეილი</label>
+          <label htmlFor="email" className="font-semibold">მეილი</label>
           <input
             type="email"
             id="email"
@@ -49,10 +49,12 @@ const EmployeeInfo = () => {
         </div>
 
         <div className="my-8">
-          <label htmlFor="email">მეილი</label>
+          <label htmlFor="phone" className="font-semibold">
+            ტელეფონის ნომერი
+          </label>
           <input
-            type="email"
-            id="email"
+            type="phone"
+            id="phone"
             placeholder="+995 598 00 07 01"
             className="my-1 p-2 text-sm block w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
           <span className="text-sm text-[#2e2e2e]">
