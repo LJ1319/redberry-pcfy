@@ -14,7 +14,7 @@ const EmployeeInfo = () => {
               type="text"
               id="first-name"
               placeholder="გრიშა"
-              className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
+              className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
             <span className="text-sm text-[#2e2e2e]">
               მინიმუმ 2 სიმბოლო, ქართული ასოები
             </span>
@@ -26,7 +26,7 @@ const EmployeeInfo = () => {
               type="text"
               id="last-name"
               placeholder="ბაგრატიონი"
-              className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
+              className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
             <span className="text-sm text-[#2e2e2e]">
               მინიმუმ 2 სიმბოლო, ქართული ასოები
             </span>
@@ -42,7 +42,7 @@ const EmployeeInfo = () => {
             type="email"
             id="email"
             placeholder="grish666@redberry.ge"
-            className="my-1 p-2 text-sm block w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
+            className="my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
           <span className="text-sm text-[#2e2e2e]">
             უნდა მთავრდებოდეს @redberry.ge-ით
           </span>
@@ -56,7 +56,7 @@ const EmployeeInfo = () => {
             type="phone"
             id="phone"
             placeholder="+995 598 00 07 01"
-            className="my-1 p-2 text-sm block w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
+            className="my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
           <span className="text-sm text-[#2e2e2e]">
             უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს
           </span>

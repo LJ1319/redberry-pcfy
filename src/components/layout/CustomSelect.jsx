@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import ArrowDown from '../../img/arrowdown.svg';
+import ArrowDown from '../../assets/img/arrowdown.svg';
 
 const Select = ({ data, text }) => {
   const node = useRef();
@@ -32,7 +32,6 @@ const Select = ({ data, text }) => {
     };
   }, []);
 
-
   return (
     <div ref={node} className="relative flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
       {selected ? selected.name : text}
@@ -51,7 +50,7 @@ const Select = ({ data, text }) => {
               }}
               className={`${selected.id === data.id ? `bg-[#e7f0f8]` : ''} relative p-2.5 cursor-pointer hover:bg-[#e7f0f8]`}
             >
-              <span className='block font-normal text-left truncate'>
+              <span className='font-normal text-left truncate'>
                 {data.name}
               </span>
             </li>

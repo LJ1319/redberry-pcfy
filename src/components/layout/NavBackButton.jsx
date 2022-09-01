@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Back from "../../img/back.svg";
+import Back from "../../assets/img/back.svg";
 
 const NavBackButton = ({ destination }) => {
   return (

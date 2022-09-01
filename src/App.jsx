@@ -5,6 +5,7 @@ import InfoPage from "./pages/InfoPage";
 
 import EmployeeInfo from "./components/InfoPage/EmployeeInfo";
 import LaptopInfo from "./components/InfoPage/LaptopInfo";
+import SuccessPage from "./pages/SuccessPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="laptop-info" element={<LaptopInfo />} />
       </Route>
 
+      <Route path="success" element={<SuccessPage />} />
     </Routes >
   );
 };

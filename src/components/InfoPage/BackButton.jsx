@@ -5,13 +5,12 @@ const BackButton = ({ destination, text }) => {
     <div className="flex justify-end">
       <Link to={destination}>
         <button
-          className="block mt-12 rounded-lg text-[#62A1EB] text-xl"
+          className="mt-12 rounded-lg text-[#62A1EB] text-xl"
         >
           {text}
         </button>
       </Link>
     </div>
-
   );
 };
 

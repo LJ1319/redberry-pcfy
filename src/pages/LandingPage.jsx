@@ -1,7 +1,7 @@
 import LandingButton from "../components/LandingPage/LandingButton";
 
-import Logo from "../img/logo01.svg";
-import Landing from "../img/landing.svg";
+import Logo from "../assets/img/logo01.svg";
+import Landing from "../assets/img/landing.svg";
 
 const LandingPage = () => {
   return (

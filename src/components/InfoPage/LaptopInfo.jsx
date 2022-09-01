@@ -1,10 +1,10 @@
-import CustomSelect from "../layout/CustomSelect";
-
 import { Icon } from '@iconify-icon/react';
 
-import { brands, cpus } from "../../data";
+import CustomSelect from "../layout/CustomSelect";
 import BackButton from "./BackButton";
 import SaveButton from "./SaveButton";
+
+import { brands, cpus } from "../../data";
 
 const LaptopInfo = () => {
   return (
@@ -24,8 +24,8 @@ const LaptopInfo = () => {
           </label>
         </div>
 
-        <div className="flex justify-evenly my-6 border-b-2 pb-8">
-          <div className="mr-10 my-5">
+        <div className="flex my-6 border-b-2 pb-8">
+          <div className="mr-20 my-5">
             <label htmlFor="laptop-name" className="font-semibold">
               ლეპტოპის სახელი
             </label>
@@ -33,7 +33,7 @@ const LaptopInfo = () => {
               type="text"
               id="laptop-name"
               placeholder="HP"
-              className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
+              className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
             <span className="text-sm text-[#2e2e2e]">
               ლათინური ასოები, ციფრები, !@#$%^&*()_+=
             </span>
@@ -43,7 +43,7 @@ const LaptopInfo = () => {
         </div>
 
         <div className="flex flex-col my-6 border-b-2 pb-8">
-          <div className="flex justify-evenly ">
+          <div className="flex justify-evenly">
             <CustomSelect data={cpus} text="CPU" />
             <div className="ml-10 my-5">
               <label htmlFor="cpu-core" className="font-semibold">
@@ -53,7 +53,7 @@ const LaptopInfo = () => {
                 type="text"
                 id="cpu-core"
                 placeholder="14"
-                className="my-1 p-2 text-sm block w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
+                className="my-1 p-2 text-sm w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
               <span className="text-sm text-[#2e2e2e]">
                 მხოლოდ ციფრები
               </span>
@@ -67,7 +67,7 @@ const LaptopInfo = () => {
                 type="text"
                 id="cpu-thread"
                 placeholder="365"
-                className="my-1 p-2 text-sm block w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
+                className="my-1 p-2 text-sm w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
               <span className="text-sm text-[#2e2e2e]">
                 მხოლოდ ციფრები
               </span>
@@ -75,7 +75,7 @@ const LaptopInfo = () => {
           </div>
 
           <div className="flex justify-start">
-            <div className="mr-10 my-5">
+            <div className="mr-20 my-5">
               <label htmlFor="laptop-ram" className="font-semibold">
                 ლეპტოპის RAM (GB)
               </label>
@@ -125,7 +125,7 @@ const LaptopInfo = () => {
                 type="date"
                 id="purchase-date"
                 placeholder="დდ/მმ/წწ"
-                className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
+                className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
             </div>
 
             <div className="ml-10 my-5">
@@ -138,7 +138,7 @@ const LaptopInfo = () => {
                   type="text"
                   id="laptop-price"
                   placeholder="0000"
-                  className="my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
+                  className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
                 <div className="w-max mt-2.5 ml-[-40px]">
                   <Icon icon="tabler:currency-lari" height="2em"
                     style={{ color: "grey" }} />
@@ -181,7 +181,7 @@ const LaptopInfo = () => {
 
         <div className="flex justify-between">
           <BackButton destination="/add-info/employee-info" text="უკან" />
-          <SaveButton destination="/" text="დამახსოვრება" />
+          <SaveButton destination="/success" text="დამახსოვრება" />
         </div>
       </form >
     </div >
