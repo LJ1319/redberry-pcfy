@@ -1,28 +1,83 @@
+import { useState } from 'react';
 import { Icon } from '@iconify-icon/react';
 
 import CustomSelect from "../layout/CustomSelect";
 import BackButton from "./BackButton";
 import SaveButton from "./SaveButton";
 
+import Done from "../../assets/img/done.svg";
+
 import { brands, cpus } from "../../data";
 
 const LaptopInfo = () => {
+  const [image, setImage] = useState(null);
+
+  const handleChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
+  console.log(image);
+
   return (
     <div className="w-8/12 mx-auto bg-white rounded-lg drop-shadow-2xl">
       <form className="w-8/12 mx-auto py-16">
-        <div className="h-96 flex flex-col justify-center items-center rounded-2xl border-2 border-dashed border-[#4386A9] bg-[#f6f6f6] ">
-          <span className="text-xl text-center text-[#4386A9]">
-            ჩააგდე ან ატვირთე <br /> ლეპტოპის ფოტო
-          </span>
-          <label
-            htmlFor="file-upload"
-          >
-            <div className="w-56 h-16 mt-12 bg-[#62A1EB] rounded-lg text-white text-xl  text-center py-4 cursor-pointer">
-              <input type="file" id="file-upload" name="file-upload" className="sr-only" />
-              ატვირთე
+        {!image
+          ? (
+            <div className="h-96 flex flex-col justify-center items-center rounded-2xl border-2 border-dashed border-[#4386A9] bg-[#f6f6f6]">
+              <span className="text-xl text-center text-[#4386A9]">
+                ჩააგდე ან ატვირთე <br /> ლეპტოპის ფოტო
+              </span>
+              <label
+                htmlFor="file-upload"
+              >
+                <div className="w-56 h-16 mt-12 bg-[#62A1EB] rounded-lg text-white text-xl  text-center py-4 cursor-pointer">
+                  <input
+                    type="file"
+                    id="file-upload"
+                    name="file-upload"
+                    className="sr-only"
+                    onChange={handleChange} />
+                  ატვირთე
+                </div>
+              </label>
+            </div>)
+          : (
+            <div className="mt-12 mb-20 h-96 w-full mx-auto flex flex-col justify-center items-center">
+              <div className="h-full">
+                <img
+                  src={URL.createObjectURL(image)}
+                  className="h-full rounded-2xl"
+                />
+              </div>
+
+              <div className="flex w-full justify-between">
+                <div className="flex mt-16">
+                  <img src={Done} alt="done sign" className="h-6" />
+                  <span className="ml-4">{image.name}, </span>
+                  <span className="ml-2 text-[#5F5F5F]">
+                    {Math.floor(image.size / 1024)} mb
+                  </span>
+                </div>
+
+                <div className="ml-24">
+                  <label
+                    htmlFor="file-upload"
+                  >
+                    <div className="w-56 h-16 mt-12 bg-[#62A1EB] rounded-lg text-white text-xl text-center py-4 cursor-pointer">
+                      <input
+                        type="file"
+                        id="file-upload"
+                        name="file-upload"
+                        className="sr-only"
+                        onChange={handleChange} />
+                      თავიდან ატვირთე
+                    </div>
+                  </label>
+                </div>
+              </div>
             </div>
-          </label>
-        </div>
+          )
+        }
 
         <div className="flex my-6 border-b-2 pb-8">
           <div className="mr-20 my-5">
