@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import fetch from '../../axios/custom';
+
 import { Icon } from '@iconify-icon/react';
 
 import CustomSelect from "../layout/CustomSelect";
@@ -7,16 +9,36 @@ import SaveButton from "./SaveButton";
 
 import Done from "../../assets/img/done.svg";
 
-import { brands, cpus } from "../../data";
+import { brands as localBrands } from "../../data";
+import { cpus as localCPUs } from "../../data";
 
 const LaptopInfo = () => {
   const [image, setImage] = useState(null);
+  const [brands, setBrands] = useState("");
+  const [cpus, setCPUs] = useState("");
 
   const handleChange = (event) => {
     setImage(event.target.files[0]);
   };
 
-  console.log(image);
+  // console.log(image);
+
+  const fetchData = async () => {
+    try {
+      const brandsData = await fetch("/brands");
+      const cpusData = await fetch("/cpus");
+
+      setBrands(brandsData.data.data);
+      setCPUs(cpusData.data.data);
+
+    } catch (error) {
+
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="w-8/12 mx-auto bg-white rounded-lg drop-shadow-2xl">
@@ -47,12 +69,13 @@ const LaptopInfo = () => {
                 <img
                   src={URL.createObjectURL(image)}
                   className="h-full rounded-2xl"
+                  alt="uploaded"
                 />
               </div>
 
               <div className="flex w-full justify-between">
                 <div className="flex mt-16">
-                  <img src={Done} alt="done sign" className="h-6" />
+                  <img src={Done} alt="done icon" className="h-6" />
                   <span className="ml-4">{image.name}, </span>
                   <span className="ml-2 text-[#5F5F5F]">
                     {Math.floor(image.size / 1024)} mb

@@ -36,7 +36,7 @@ const Select = ({ data, text }) => {
     <div ref={node} className="relative flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
       {selected ? selected.name : text}
       <button onClick={show} type="button">
-        <img src={ArrowDown} alt="" />
+        <img src={ArrowDown} alt="down arrow" />
       </button>
 
       {open &&

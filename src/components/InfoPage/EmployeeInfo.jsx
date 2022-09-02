@@ -1,9 +1,50 @@
+import { useState, useEffect } from "react";
+import fetch from "../../axios/custom";
+
 import CustomSelect from "../layout/CustomSelect";
 import NextButton from "./NextButton";
 
-import { teams, positions } from "../../data";
+import { teams as localTeams } from "../../data";
+import { positions as localPositions } from "../../data";
 
 const EmployeeInfo = () => {
+
+  const [teams, setTeams] = useState(localTeams);
+  const [positions, setPositions] = useState(localPositions);
+
+  const fetchData = async () => {
+    try {
+      const teamsData = await fetch("/teams");
+      const positionsData = await fetch("/positions");
+
+      setTeams(teamsData.data.data);
+      setPositions(positionsData.data.data);
+
+    } catch (error) {
+
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // console.log(teams);
+  // console.log(positions);
+
+
+  const filterPositionsByTeams = (teams, positions) => {
+    const positionTeamId = positions.filter((position) => position.team_id === teams.id);
+
+    return positionTeamId;
+  };
+
+  // const filtered = filterPositionsByTeams(teams, positions);
+  // console.log(filtered);
+
+
+
+
   return (
     <div className="w-8/12 mx-auto bg-white rounded-lg drop-shadow-2xl">
       <form className="w-8/12 mx-auto py-16">
@@ -33,8 +74,8 @@ const EmployeeInfo = () => {
           </div>
         </div>
 
-        <CustomSelect text="თიმი" data={teams} />
-        <CustomSelect text="პოზიცია" data={positions} />
+        <CustomSelect text="თიმი" data={teams} filter={filterPositionsByTeams} />
+        <CustomSelect text="პოზიცია" data={positions} filter={filterPositionsByTeams} />
 
         <div className="my-8">
           <label htmlFor="email" className="font-semibold">მეილი</label>
