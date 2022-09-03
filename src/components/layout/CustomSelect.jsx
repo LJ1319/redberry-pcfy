@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from "react";
 import ArrowDown from '../../assets/img/arrowdown.svg';
 
-const Select = ({ data, text }) => {
+const Select = ({ data, text, changeTeamId }) => {
   const node = useRef();
 
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
   const show = () => {
@@ -22,6 +22,9 @@ const Select = ({ data, text }) => {
   const handleChange = (selectedValue) => {
     setSelected(selectedValue);
     setOpen(false);
+
+    if (!selectedValue.team_id)
+      changeTeamId(selectedValue.id);
   };
 
   useEffect(() => {
