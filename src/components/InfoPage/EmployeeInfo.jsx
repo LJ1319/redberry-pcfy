@@ -19,6 +19,7 @@ const EmployeeInfo = () => {
 
   const [filteredPositions, setFilteredPositions] = useLocalStorage("filtered_positions", []);
   const [teamId, setTeamId] = useLocalStorage("team_id", "");
+  const [positionTeamId, setPositionTeamId] = useLocalStorage("position_teamId", "");
 
   const employeeNameInputRef = useRef();
   const employeeSurnameInputRef = useRef();
@@ -89,12 +90,16 @@ const EmployeeInfo = () => {
             text="თიმი"
             name="team"
             data={teams}
-            changeTeamId={(teamId) => setTeamId(teamId)} />
+            changeTeamId={(teamId) => setTeamId(teamId)}
+          />
 
           <CustomSelect
             text="პოზიცია"
             name="position"
             data={filteredPositions}
+            teamId={teamId}
+            positionTeamId={positionTeamId}
+            changePositionTeamId={(positionTeamId) => setPositionTeamId(positionTeamId)}
           />
 
           <div className="my-8">

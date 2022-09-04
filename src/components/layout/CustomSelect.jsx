@@ -2,7 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import ArrowDown from '../../assets/img/arrowdown.svg';
 import { useLocalStorage } from "../../useLocalStorage";
 
-const Select = ({ data, text, changeTeamId, name, }) => {
+const Select = (
+  { data, text, name, changeTeamId, teamId, changePositionTeamId, positionTeamId }
+) => {
   const node = useRef();
 
   const [selected, setSelected] = useLocalStorage(name, "");
@@ -21,12 +23,22 @@ const Select = ({ data, text, changeTeamId, name, }) => {
   };
 
   const handleChange = (selectedValue) => {
-    setSelected(selectedValue);
     setOpen(false);
 
     if (!selectedValue.team_id && name === "team")
       changeTeamId(selectedValue.id);
+
+    if (selectedValue.team_id && name === "position")
+      changePositionTeamId(selectedValue.team_id);
+
+    setSelected(selectedValue);
   };
+
+  useEffect(() => {
+    if (teamId !== positionTeamId) {
+      setSelected("");
+    }
+  }, [changeTeamId, changePositionTeamId]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClick);
@@ -37,9 +49,12 @@ const Select = ({ data, text, changeTeamId, name, }) => {
   }, []);
 
   return (
-    <div ref={node} className="relative flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg">
+    <div
+      ref={node}
+      onClick={show}
+      className="relative flex justify-between my-12 w-full h-12 p-2.5 text-lg font-bold bg-[#EBEBEB] rounded-lg cursor-pointer">
       {selected ? selected.name : text}
-      <button onClick={show} type="button">
+      <button type="button">
         <img src={ArrowDown} alt="down arrow" />
       </button>
 
