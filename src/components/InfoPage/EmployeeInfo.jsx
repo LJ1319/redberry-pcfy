@@ -6,9 +6,6 @@ import { useLocalStorage } from "../../useLocalStorage";
 import CustomSelect from "../layout/CustomSelect";
 import NextButton from "./NextButton";
 
-// import { teams as localTeams } from "../../data";
-// import { positions as localPositions } from "../../data";
-
 const EmployeeInfo = () => {
 
   const [name, setName] = useLocalStorage("employee_name", "");
@@ -20,8 +17,8 @@ const EmployeeInfo = () => {
   const [positions, setPositions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [filteredPositions, setFilteredPositions] = useState([]);
-  const [teamId, setTeamId] = useState();
+  const [filteredPositions, setFilteredPositions] = useLocalStorage("filtered_positions", []);
+  const [teamId, setTeamId] = useLocalStorage("team_id", "");
 
   const employeeNameInputRef = useRef();
   const employeeSurnameInputRef = useRef();
@@ -46,13 +43,11 @@ const EmployeeInfo = () => {
     fetchData();
   }, []);
 
-
   const filterPositionsByTeams = positions.filter((position) => position.team_id === teamId);
 
   useEffect(() => {
     setFilteredPositions(filterPositionsByTeams);
-  }, [teamId]);
-
+  }, [teamId, teams]);
 
   return (
     isLoading && !filterPositionsByTeams ? "loading" :
@@ -92,11 +87,13 @@ const EmployeeInfo = () => {
 
           <CustomSelect
             text="თიმი"
+            name="team"
             data={teams}
             changeTeamId={(teamId) => setTeamId(teamId)} />
 
           <CustomSelect
             text="პოზიცია"
+            name="position"
             data={filteredPositions}
           />
 

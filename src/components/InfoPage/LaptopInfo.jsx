@@ -11,11 +11,7 @@ import SaveButton from "./SaveButton";
 import Done from "../../assets/img/done.svg";
 import { useRef } from "react";
 
-// import { brands as localBrands } from "../../data";
-// import { cpus as localCPUs } from "../../data";
-
 const LaptopInfo = () => {
-
   const [laptopName, setLaptopName] = useLocalStorage("laptop_name", "");
   const [cpuCores, setCpuCores] = useLocalStorage("cpu_cores", "");
   const [cpuThreads, setCpuThreads] = useLocalStorage("cpu_threads", "");
@@ -25,11 +21,10 @@ const LaptopInfo = () => {
   const [laptopPrice, setLaptopPrice] = useLocalStorage("laptop_price", "");
   const [laptopCondition, setLaptopCondition] = useLocalStorage("laptop_condition", "");
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [brands, setBrands] = useState("");
   const [cpus, setCPUs] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
 
   const laptopNameInputRef = useRef();
   const cpuCoresInputRef = useRef();
@@ -47,11 +42,10 @@ const LaptopInfo = () => {
   const handleMemoryTypeChange = (event) => {
     setMemoryType(event.target.value);
   };
+
   const handleLaptopConditionChange = (event) => {
     setLaptopCondition(event.target.value);
   };
-
-  // console.log(image);
 
   const fetchData = async () => {
     try {
@@ -151,12 +145,12 @@ const LaptopInfo = () => {
             </span>
           </div>
 
-          <CustomSelect data={brands} text="ლეპტოპის ბრენდი" />
+          <CustomSelect data={brands} text="ლეპტოპის ბრენდი" name="brand" />
         </div>
 
         <div className="flex flex-col my-6 border-b-2 pb-8">
           <div className="flex justify-evenly">
-            <CustomSelect data={cpus} text="CPU" />
+            <CustomSelect data={cpus} text="CPU" name="cpu" />
             <div className="ml-10 my-5">
               <label htmlFor="cpu-core" className="font-semibold">
                 CPU-ს ბირთვი

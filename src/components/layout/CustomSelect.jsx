@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import ArrowDown from '../../assets/img/arrowdown.svg';
+import { useLocalStorage } from "../../useLocalStorage";
 
-const Select = ({ data, text, changeTeamId }) => {
+const Select = ({ data, text, changeTeamId, name, }) => {
   const node = useRef();
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useLocalStorage(name, "");
   const [open, setOpen] = useState(false);
 
   const show = () => {
@@ -23,7 +24,7 @@ const Select = ({ data, text, changeTeamId }) => {
     setSelected(selectedValue);
     setOpen(false);
 
-    if (!selectedValue.team_id)
+    if (!selectedValue.team_id && name === "team")
       changeTeamId(selectedValue.id);
   };
 
