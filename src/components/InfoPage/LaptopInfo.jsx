@@ -18,7 +18,6 @@ const LaptopInfo = () => {
   const [laptopName, setLaptopName] = useLocalStorage("laptop_name", "");
   const [brandId, setBrandId] = useLocalStorage("brand_id", "");
   const [cpu, setCpu] = useLocalStorage("cpu", "");
-  // const [cpuName, setCpuName] = useLocalStorage("cpu_name", "");
   const [cpuCores, setCpuCores] = useLocalStorage("cpu_cores", "");
   const [cpuThreads, setCpuThreads] = useLocalStorage("cpu_threads", "");
   const [ram, setRam] = useLocalStorage("ram", "");
@@ -54,6 +53,7 @@ const LaptopInfo = () => {
   const [isValidLaptopCondition, setIsValidLaptopCondition] = useLocalStorage("isValidLaptopCondition", "not_filled");
 
   const [isValid, setIsValid] = useState(false);
+  const [isRecorded, setIsRecorded] = useState(false);
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
@@ -159,7 +159,7 @@ const LaptopInfo = () => {
           "Content-Type": "multipart/form-data"
         }
       });
-      console.log(resp);
+      if (resp.status === 200) { setIsRecorded(true); }
     } catch (error) {
       console.log(error);
     }
@@ -458,7 +458,7 @@ const LaptopInfo = () => {
         <div className="flex justify-between">
           <BackButton destination="/add-info/employee-info" text="უკან" />
 
-          {/* {isValid && (<Navigate to="/success" />)} */}
+          {isRecorded && (<Navigate to="/success" />)}
           <SaveButton
             text="დამახსოვრება"
             validate={validate} />
