@@ -11,7 +11,7 @@ const LandingPage = () => {
 
       <div>
         <LandingButton destination="add-info/employee-info" text="ჩანაწერის დამატება" />
-        <LandingButton destination="/" text="ჩანაწერების სია" />
+        <LandingButton destination="laptops" text="ჩანაწერების სია" />
       </div>
     </div >
   );
