@@ -81,7 +81,7 @@ const LaptopInfo = () => {
   }, []);
 
   const validate = () => {
-    let regExp = /^[a-zA-Z0-9 \ ! \ @ \ # \ $ \ % \ ^ \ & \ * \ ( \ )\ _\ +\ =]+$/;
+    let regExp = /^[a-zA-Z0-9 !@#$%^&*()_+=]+$/;
     let digRegExp = /^\d+$/;
 
     let validImage = image !== "";
@@ -96,17 +96,17 @@ const LaptopInfo = () => {
     let validLaptopPrice = digRegExp.test(laptopPriceInputRef.current.value);
     let validLaptopCondition = JSON.parse(localStorage.getItem("laptop_condition")) !== "";
 
-    { validImage ? setIsValidImage(true) : setIsValidImage(false); };
-    { validLaptopName ? setIsValidLaptopName(true) : setIsValidLaptopName(false); }
-    { validBrand ? setIsValidBrand(true) : setIsValidBrand(false); }
-    { validCpu ? setIsValidCpu(true) : setIsValidCpu(false); }
-    { validCpuCores ? setIsValidCpuCores(true) : setIsValidCpuCores(false); }
-    { validCpuThreads ? setIsValidCpuThreads(true) : setIsValidCpuThreads(false); }
-    { validRam ? setIsValidRam(true) : setIsValidRam(false); }
-    { validMemoryType ? setIsValidMemoryType(true) : setIsValidMemoryType(false); }
-    { validPurchaseDate ? setIsValidPurchaseDate(true) : setIsValidPurchaseDate(false); }
-    { validLaptopPrice ? setIsValidLaptopPrice(true) : setIsValidLaptopPrice(false); }
-    { validLaptopCondition ? setIsValidLaptopCondition(true) : setIsValidLaptopCondition(false); }
+    validImage ? setIsValidImage(true) : setIsValidImage(false);
+    validLaptopName ? setIsValidLaptopName(true) : setIsValidLaptopName(false);
+    validBrand ? setIsValidBrand(true) : setIsValidBrand(false);
+    validCpu ? setIsValidCpu(true) : setIsValidCpu(false);
+    validCpuCores ? setIsValidCpuCores(true) : setIsValidCpuCores(false);
+    validCpuThreads ? setIsValidCpuThreads(true) : setIsValidCpuThreads(false);
+    validRam ? setIsValidRam(true) : setIsValidRam(false);
+    validMemoryType ? setIsValidMemoryType(true) : setIsValidMemoryType(false);
+    validPurchaseDate ? setIsValidPurchaseDate(true) : setIsValidPurchaseDate(false);
+    validLaptopPrice ? setIsValidLaptopPrice(true) : setIsValidLaptopPrice(false);
+    validLaptopCondition ? setIsValidLaptopCondition(true) : setIsValidLaptopCondition(false);
 
     if (validImage && validLaptopName && validBrand && validCpu && validCpuCores && validCpuThreads && validRam && validMemoryType && validPurchaseDate && validLaptopPrice && validLaptopCondition) {
       setIsValid(true);
@@ -127,13 +127,13 @@ const LaptopInfo = () => {
           ? (
             <div
               className={`
-                ${!isValidImage ? "border-[#E52F2F] bg-[#FFF1F1]" : ""}
+                ${!isValidImage ? "border-redberryRed bg-[#FFF1F1]" : ""}
                 h-96 flex flex-col justify-center items-center rounded-2xl border-2 border-dashed border-[#4386A9] bg-[#f6f6f6]
               `}>
               {!isValidImage && <img src={Warning} alt="warning sign" className="mb-6" />}
               <span
                 className={`
-                ${!isValidImage ? "text-[#E52F2F]" : ""}
+                ${!isValidImage ? "text-redberryRed" : ""}
                 text-xl text-center text-[#4386A9] font-semibold
               `}>
                 ჩააგდე ან ატვირთე <br /> ლეპტოპის ფოტო
@@ -195,7 +195,7 @@ const LaptopInfo = () => {
           <div className="mr-20 my-5">
             <label
               htmlFor="laptop-name"
-              className={`${!isValidLaptopName ? "text-[#E52F2F]" : ""} font-semibold`}>
+              className={`${!isValidLaptopName ? "text-redberryRed" : ""} font-semibold`}>
               ლეპტოპის სახელი
             </label>
             <input
@@ -207,10 +207,10 @@ const LaptopInfo = () => {
               ref={laptopNameInputRef}
               onChange={(e) => setLaptopName(e.target.value)}
               className={`
-                ${!isValidLaptopName ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                ${!isValidLaptopName ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} 
                 my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff] 
               `} />
-            <span className={`${!isValidLaptopName ? "text-[#E52F2F]" : ""} text-sm text-[#2e2e2e]`} >
+            <span className={`${!isValidLaptopName ? "text-redberryRed" : ""} text-sm text-[#2e2e2e]`} >
               ლათინური ასოები, ციფრები, !@#$%^&*()_+=
             </span>
           </div>
@@ -222,7 +222,7 @@ const LaptopInfo = () => {
           <div className="flex justify-evenly">
             <CustomSelect data={cpus} text="CPU" name="cpu" />
             <div className="ml-10 my-5">
-              <label htmlFor="cpu-core" className={`${!isValidCpuCores ? "text-[#E52F2F]" : ""} font-semibold`}>
+              <label htmlFor="cpu-core" className={`${!isValidCpuCores ? "text-redberryRed" : ""} font-semibold`}>
                 CPU-ს ბირთვი
               </label>
               <input
@@ -233,14 +233,14 @@ const LaptopInfo = () => {
                 value={cpuCores}
                 ref={cpuCoresInputRef}
                 onChange={(e) => setCpuCores(e.target.value)}
-                className={`${!isValidCpuCores ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} my-1 p-2 text-sm w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff] `} />
-              <span className={`${!isValidCpuCores ? "text-[#E52F2F]" : ""} text-sm text-[#2e2e2e]`}>
+                className={`${!isValidCpuCores ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} my-1 p-2 text-sm w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff] `} />
+              <span className={`${!isValidCpuCores ? "text-redberryRed" : ""} text-sm text-[#2e2e2e]`}>
                 მხოლოდ ციფრები
               </span>
             </div>
 
             <div className="ml-10 my-5">
-              <label htmlFor="cpu-thread" className={`${!isValidCpuThreads ? "text-[#E52F2F]" : ""} font-semibold`}>
+              <label htmlFor="cpu-thread" className={`${!isValidCpuThreads ? "text-redberryRed" : ""} font-semibold`}>
                 CPU-ს ნაკადი
               </label>
               <input
@@ -251,8 +251,8 @@ const LaptopInfo = () => {
                 value={cpuThreads}
                 ref={cpuThreadsInputRef}
                 onChange={(e) => setCpuThreads(e.target.value)}
-                className={`${!isValidCpuThreads ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} my-1 p-2 text-sm w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff] `} />
-              <span className={`${!isValidCpuCores ? "text-[#E52F2F]" : ""} text-sm text-[#2e2e2e]`}>
+                className={`${!isValidCpuThreads ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} my-1 p-2 text-sm w-64 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff] `} />
+              <span className={`${!isValidCpuCores ? "text-redberryRed" : ""} text-sm text-[#2e2e2e]`}>
                 მხოლოდ ციფრები
               </span>
             </div>
@@ -260,7 +260,7 @@ const LaptopInfo = () => {
 
           <div className="flex justify-start">
             <div className="mr-20 my-5">
-              <label htmlFor="laptop-ram" className={`${!isValidRam ? "text-[#E52F2F]" : ""} font-semibold`}>
+              <label htmlFor="laptop-ram" className={`${!isValidRam ? "text-redberryRed" : ""} font-semibold`}>
                 ლეპტოპის RAM (GB)
               </label>
               <input
@@ -271,8 +271,8 @@ const LaptopInfo = () => {
                 value={ram}
                 ref={ramInputRef}
                 onChange={(e) => setRam(e.target.value)}
-                className={`${!isValidCpuThreads ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} selection:my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff] `} />
-              <span className={`${!isValidCpuCores ? "text-[#E52F2F]" : ""} text-sm text-[#2e2e2e]`}>
+                className={`${!isValidCpuThreads ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} selection:my-1 p-2 text-sm block w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff] `} />
+              <span className={`${!isValidCpuCores ? "text-redberryRed" : ""} text-sm text-[#2e2e2e]`}>
                 მხოლოდ ციფრები
               </span>
             </div>
@@ -280,7 +280,7 @@ const LaptopInfo = () => {
             <div className="mr-10 my-5">
               {!isValidMemoryType ? (
                 <div className="flex">
-                  <label htmlFor="memory-type" className="text-[#E52F2F] font-semibold">
+                  <label htmlFor="memory-type" className="text-redberryRed font-semibold">
                     მეხსიერების ტიპი
                   </label>
                   <img src={Warning} alt="warning sign" className="ml-4 mt-0.5 h-5" />
@@ -334,7 +334,7 @@ const LaptopInfo = () => {
             </div>
 
             <div className="ml-10 my-5">
-              <label htmlFor="laptop-price" className={`${!isValidLaptopPrice ? "text-[#E52F2F]" : ""} font-semibold`}>
+              <label htmlFor="laptop-price" className={`${!isValidLaptopPrice ? "text-redberryRed" : ""} font-semibold`}>
                 ლეპტოპის ფასი
               </label>
               <div className="flex">
@@ -346,13 +346,13 @@ const LaptopInfo = () => {
                   value={laptopPrice}
                   ref={laptopPriceInputRef}
                   onChange={(e) => setLaptopPrice(e.target.value)}
-                  className={`${!isValidLaptopPrice ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff] `} />
+                  className={`${!isValidLaptopPrice ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff] `} />
                 <div className="w-max mt-2.5 ml-[-40px]">
                   <Icon icon="tabler:currency-lari" height="2em"
                     style={{ color: "grey" }} />
                 </div>
               </div>
-              <span className={`${!isValidLaptopPrice ? "text-[#E52F2F]" : ""} text-sm text-[#2e2e2e]`}>
+              <span className={`${!isValidLaptopPrice ? "text-redberryRed" : ""} text-sm text-[#2e2e2e]`}>
                 მხოლოდ ციფრები
               </span>
             </div>
@@ -362,7 +362,7 @@ const LaptopInfo = () => {
             <div className="mr-10 my-5">
               {!isValidLaptopCondition ? (
                 <div className="flex">
-                  <label htmlFor="laptop-condition" className="text-[#E52F2F] font-semibold">
+                  <label htmlFor="laptop-condition" className="text-redberryRed font-semibold">
                     ლეპტოპის მდგომარეობა
                   </label>
                   <img src={Warning} alt="warning sign" className="ml-4 mt-0.5 h-5" />

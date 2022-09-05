@@ -6,11 +6,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'helvetica-neue': ['HelveticaNeue']
+        "helvetica-neue": ["HelveticaNeue"]
+      },
+      colors: {
+        "redberryRed": "#E52F2F"
       }
     },
   },
   plugins: [
-    require('tailwindcss-opentype'),
+    require("tailwindcss-opentype"),
   ],
 };

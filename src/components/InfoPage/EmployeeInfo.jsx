@@ -70,12 +70,12 @@ const EmployeeInfo = () => {
     let validEmail = employeeEmailInputRef.current.value.split('@')[1] === 'redberry.ge';
     let validPhone = digRegExp.test(employeePhoneInputRef.current.value);
 
-    { validName ? setIsValidName(true) : setIsValidName(false); }
-    { validSurname ? setIsValidSurname(true) : setIsValidSurname(false); }
-    { validTeam ? setIsValidTeam(true) : setIsValidEmail(false); }
-    { validPosition ? setIsValidPosition(true) : setIsValidPosition(false); }
-    { validEmail ? setIsValidEmail(true) : setIsValidEmail(false); }
-    { validPhone ? setIsValidPhone(true) : setIsValidPhone(false); }
+    validName ? setIsValidName(true) : setIsValidName(false);
+    validSurname ? setIsValidSurname(true) : setIsValidSurname(false);
+    validTeam ? setIsValidTeam(true) : setIsValidEmail(false);
+    validPosition ? setIsValidPosition(true) : setIsValidPosition(false);
+    validEmail ? setIsValidEmail(true) : setIsValidEmail(false);
+    validPhone ? setIsValidPhone(true) : setIsValidPhone(false);
 
     if (validName && validSurname && validTeam && validPosition && validEmail && validPhone) {
       setIsValid(true);
@@ -97,7 +97,7 @@ const EmployeeInfo = () => {
               <label
                 htmlFor="first-name"
                 className={`
-                  ${!isValidName ? "text-[#E52F2F]" : ""} font-semibold 
+                  ${!isValidName ? "text-redberryRed" : ""} font-semibold 
                 `}>
                 სახელი
               </label>
@@ -110,12 +110,12 @@ const EmployeeInfo = () => {
                 ref={employeeNameInputRef}
                 onChange={(e) => setName(e.target.value)}
                 className={`
-                  ${!isValidName ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                  ${!isValidName ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} 
                   my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]
                 `} />
               <span
                 className={`
-                  ${!isValidName ? "text-[#E52F2F]" : ""} 
+                  ${!isValidName ? "text-redberryRed" : ""} 
                   text-sm text-[#2e2e2e]
                 `}>
                 მინიმუმ 2 სიმბოლო, ქართული ასოები
@@ -126,7 +126,7 @@ const EmployeeInfo = () => {
               <label
                 htmlFor="surname"
                 className={`
-                  ${!isValidSurname ? "text-[#E52F2F]" : ""} font-semibold 
+                  ${!isValidSurname ? "text-redberryRed" : ""} font-semibold 
                 `}>
                 გვარი
               </label>
@@ -139,12 +139,12 @@ const EmployeeInfo = () => {
                 ref={employeeSurnameInputRef}
                 onChange={(e) => setSurname(e.target.value)}
                 className={`
-                  ${!isValidSurname ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""}  
+                  ${!isValidSurname ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""}  
                   my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]
                 `} />
               <span
                 className={`
-                  ${!isValidSurname ? "text-[#E52F2F]" : ""} 
+                  ${!isValidSurname ? "text-redberryRed" : ""} 
                   text-sm text-[#2e2e2e]
                 `}>
                 მინიმუმ 2 სიმბოლო, ქართული ასოები
@@ -172,7 +172,7 @@ const EmployeeInfo = () => {
             <label
               htmlFor="email"
               className={`
-                  ${!isValidEmail ? "text-[#E52F2F]" : ""} font-semibold 
+                  ${!isValidEmail ? "text-redberryRed" : ""} font-semibold 
               `}>
               მეილი
             </label>
@@ -185,12 +185,12 @@ const EmployeeInfo = () => {
               ref={employeeEmailInputRef}
               onChange={(e) => setEmail(e.target.value)}
               className={`
-                ${!isValidEmail ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                ${!isValidEmail ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} 
                 my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]
               `} />
             <span
               className={`
-                  ${!isValidEmail && isValid ? "text-[#E52F2F]" : ""} 
+                  ${!isValidEmail && isValid ? "text-redberryRed" : ""} 
                   text-sm text-[#2e2e2e]
               `}>
               უნდა მთავრდებოდეს @redberry.ge-ით
@@ -201,7 +201,7 @@ const EmployeeInfo = () => {
             <label
               htmlFor="phone"
               className={`
-                  ${!isValidPhone ? "text-[#E52F2F]" : ""} font-semibold 
+                  ${!isValidPhone ? "text-redberryRed" : ""} font-semibold 
               `}>
               ტელეფონის ნომერი
             </label>
@@ -214,12 +214,12 @@ const EmployeeInfo = () => {
               ref={employeePhoneInputRef}
               onChange={(e) => setPhone(e.target.value)}
               className={`
-                ${!isValidPhone ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                ${!isValidPhone ? "border-redberryRed focus:border-redberryRed focus:bg-white" : ""} 
                 my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]
               `} />
             <span
               className={`
-                  ${!isValidPhone ? "text-[#E52F2F]" : ""} 
+                  ${!isValidPhone ? "text-redberryRed" : ""} 
                   text-sm text-[#2e2e2e]
               `}>
               უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს
