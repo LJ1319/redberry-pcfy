@@ -12,11 +12,13 @@ import SaveButton from "./SaveButton";
 
 import Done from "../../assets/img/done.svg";
 import Warning from "../../assets/img/warning.svg";
+import axios from "axios";
 
 const LaptopInfo = () => {
   const [laptopName, setLaptopName] = useLocalStorage("laptop_name", "");
   const [brandId, setBrandId] = useLocalStorage("brand_id", "");
   const [cpu, setCpu] = useLocalStorage("cpu", "");
+  // const [cpuName, setCpuName] = useLocalStorage("cpu_name", "");
   const [cpuCores, setCpuCores] = useLocalStorage("cpu_cores", "");
   const [cpuThreads, setCpuThreads] = useLocalStorage("cpu_threads", "");
   const [ram, setRam] = useLocalStorage("ram", "");
@@ -119,16 +121,49 @@ const LaptopInfo = () => {
 
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     let data = formData();
     if (isValidImage)
-      data.append("image", image);
+      data.append("laptop_image", image);
 
     for (const pair of data.entries()) {
       console.log(pair);
     }
+
+    const fullData = {
+      name: data.get("name"),
+      surname: data.get("surname"),
+      team_id: data.get("team_id"),
+      position_id: data.get("position_id"),
+      phone_number: data.get("phone_number"),
+      email: data.get("email"),
+      token: data.get("token"),
+      laptop_name: data.get("laptop_name"),
+      laptop_image: data.get("laptop_image"),
+      laptop_cpu: data.get("laptop_cpu"),
+      laptop_brand_id: data.get("laptop_brand_id"),
+      laptop_cpu_cores: data.get("laptop_cpu_cores"),
+      laptop_cpu_threads: data.get("laptop_cpu_threads"),
+      laptop_ram: data.get("laptop_ram"),
+      laptop_hard_drive_type: data.get("laptop_hard_drive_type"),
+      laptop_purchase_date: data.get("laptop_purchase_date"),
+      laptop_price: data.get("laptop_price"),
+      laptop_state: data.get("laptop_state"),
+    };
+
+    try {
+      const resp = await fetch.post("/laptop/create", fullData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      console.log(resp);
+    } catch (error) {
+      console.log(error);
+    }
+
   };
 
   return (
@@ -315,10 +350,10 @@ const LaptopInfo = () => {
                   type="radio"
                   id="memory-type"
                   name="memory-type"
-                  value="ssd"
+                  value="SSD"
                   ref={memoryTypeInputRef}
                   onChange={handleMemoryTypeChange}
-                  checked={memoryType === "ssd"}
+                  checked={memoryType === "SSD"}
                   className="w-5 h-5 appearance-none rounded-full border-2 border-[#4D9AC3] bg-white checked:ring-inset checked:ring-8 checked:ring-offset-2 checked:ring-[#4D9AC3]"
                 />
                 <span className="my-[-2px] ml-4 mr-12  font-medium">SSD</span>
@@ -326,10 +361,10 @@ const LaptopInfo = () => {
                   type="radio"
                   id="memory-type"
                   name="memory-type"
-                  value="hdd"
+                  value="HDD"
                   ref={memoryTypeInputRef}
                   onChange={handleMemoryTypeChange}
-                  checked={memoryType === "hdd"}
+                  checked={memoryType === "HDD"}
                   className="w-5 h-5 appearance-none rounded-full border-2 border-[#4D9AC3] bg-white checked:ring-inset checked:ring-8 checked:ring-offset-2 checked:ring-[#4D9AC3]"
                 />
                 <span className="my-[-2px] ml-4  font-medium">HDD</span>
