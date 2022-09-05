@@ -3,7 +3,7 @@ import ArrowDown from '../../assets/img/arrowdown.svg';
 import { useLocalStorage } from "../../useLocalStorage";
 
 const Select = (
-  { data, text, name, changeTeamId, teamId, changePositionTeamId, positionTeamId }
+  { data, text, name, changeTeamId, teamId, changePositionId, changePositionTeamId, positionTeamId, changeBrandId, changeCpu }
 ) => {
   const node = useRef();
 
@@ -25,11 +25,20 @@ const Select = (
   const handleChange = (selectedValue) => {
     setOpen(false);
 
-    if (!selectedValue.team_id && name === "team")
+    if (name === "team")
       changeTeamId(selectedValue.id);
 
-    if (selectedValue.team_id && name === "position")
+    if (name === "position") {
+      changePositionId(selectedValue.id);
       changePositionTeamId(selectedValue.team_id);
+    }
+
+    if (name === "brand")
+      changeBrandId(selectedValue.id);
+
+    if (name === "cpu")
+      changeCpu(selectedValue.name);
+
 
     setSelected(selectedValue);
   };
@@ -38,7 +47,7 @@ const Select = (
     if (teamId !== positionTeamId) {
       setSelected("");
     }
-  }, [changeTeamId, changePositionTeamId]);
+  }, [setSelected, teamId, positionTeamId, changeTeamId, changePositionTeamId, changeBrandId, changeCpu]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClick);

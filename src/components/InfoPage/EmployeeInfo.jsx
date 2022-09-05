@@ -19,6 +19,7 @@ const EmployeeInfo = () => {
 
   const [filteredPositions, setFilteredPositions] = useLocalStorage("filtered_positions", []);
   const [teamId, setTeamId] = useLocalStorage("team_id", "");
+  const [positionId, setPositionId] = useLocalStorage("position_id", "");
   const [positionTeamId, setPositionTeamId] = useLocalStorage("position_teamId", "");
 
   const employeeNameInputRef = useRef();
@@ -57,7 +58,7 @@ const EmployeeInfo = () => {
 
   useEffect(() => {
     setFilteredPositions(filterPositionsByTeams);
-  }, [teamId, teams]);
+  }, [teamId, teams, setFilteredPositions]);
 
   const validate = () => {
     let geoRegExp = /^[ა-ჰ]{2,}$/;
@@ -165,6 +166,7 @@ const EmployeeInfo = () => {
             data={filteredPositions}
             teamId={teamId}
             positionTeamId={positionTeamId}
+            changePositionId={(positionId) => setPositionId(positionId)}
             changePositionTeamId={(positionTeamId) => setPositionTeamId(positionTeamId)}
           />
 

@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Icon } from '@iconify-icon/react';
 
 import fetch from '../../axios/custom';
+import { formData } from "../../formData";
 import { useLocalStorage } from "../../useLocalStorage";
 
 import CustomSelect from "../layout/CustomSelect";
@@ -14,6 +15,8 @@ import Warning from "../../assets/img/warning.svg";
 
 const LaptopInfo = () => {
   const [laptopName, setLaptopName] = useLocalStorage("laptop_name", "");
+  const [brandId, setBrandId] = useLocalStorage("brand_id", "");
+  const [cpu, setCpu] = useLocalStorage("cpu", "");
   const [cpuCores, setCpuCores] = useLocalStorage("cpu_cores", "");
   const [cpuThreads, setCpuThreads] = useLocalStorage("cpu_threads", "");
   const [ram, setRam] = useLocalStorage("ram", "");
@@ -118,6 +121,14 @@ const LaptopInfo = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    let data = formData();
+    if (isValidImage)
+      data.append("image", image);
+
+    for (const pair of data.entries()) {
+      console.log(pair);
+    }
   };
 
   return (
@@ -215,12 +226,22 @@ const LaptopInfo = () => {
             </span>
           </div>
 
-          <CustomSelect data={brands} text="ლეპტოპის ბრენდი" name="brand" />
+          <CustomSelect
+            data={brands}
+            text="ლეპტოპის ბრენდი"
+            name="brand"
+            changeBrandId={(brandId) => setBrandId(brandId)}
+          />
         </div>
 
         <div className="flex flex-col my-6 border-b-2 pb-8">
           <div className="flex justify-evenly">
-            <CustomSelect data={cpus} text="CPU" name="cpu" />
+            <CustomSelect
+              data={cpus}
+              text="CPU"
+              name="cpu"
+              changeCpu={(cpu) => setCpu(cpu)}
+            />
             <div className="ml-10 my-5">
               <label htmlFor="cpu-core" className={`${!isValidCpuCores ? "text-redberryRed" : ""} font-semibold`}>
                 CPU-ს ბირთვი
@@ -402,7 +423,7 @@ const LaptopInfo = () => {
         <div className="flex justify-between">
           <BackButton destination="/add-info/employee-info" text="უკან" />
 
-          {isValid && (<Navigate to="/success" />)}
+          {/* {isValid && (<Navigate to="/success" />)} */}
           <SaveButton
             text="დამახსოვრება"
             validate={validate} />

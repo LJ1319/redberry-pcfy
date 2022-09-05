@@ -14,9 +14,9 @@ const SuccessPage = () => {
           </div>
 
           <div className="flex flex-col items-center mt-6">
-            <Link to="/">
-              <button className="w-60 h-16 mt-12 bg-[#62A1EB] rounded-lg text-white text-xl hover:bg-[#317AD0] active:bg-[#1A5DAB]">სიაში გადაყვანა</button>
-            </Link>
+            <button className="w-60 h-16 mt-12 bg-[#62A1EB] rounded-lg text-white text-xl hover:bg-[#317AD0] active:bg-[#1A5DAB]">
+              <Link to="/">სიაში გადაყვანა</Link>
+            </button>
 
             <Link to="/">
               <button className="mt-4 rounded-lg text-[#62A1EB] text-xl">მთავარი</button>
