@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Navigate } from "react-router-dom";
 
 import fetch from "../../axios/custom";
 import { useLocalStorage } from "../../useLocalStorage";
@@ -7,7 +8,6 @@ import CustomSelect from "../layout/CustomSelect";
 import NextButton from "./NextButton";
 
 const EmployeeInfo = () => {
-
   const [name, setName] = useLocalStorage("employee_name", "");
   const [surname, setSurname] = useLocalStorage("employee_surname", "");
   const [email, setEmail] = useLocalStorage("employee_email", "");
@@ -25,6 +25,15 @@ const EmployeeInfo = () => {
   const employeeSurnameInputRef = useRef();
   const employeeEmailInputRef = useRef();
   const employeePhoneInputRef = useRef();
+
+  const [isValidName, setIsValidName] = useLocalStorage("isValidName", "not_filled");
+  const [isValidSurname, setIsValidSurname] = useLocalStorage("isValidSurname", "not_filled");
+  const [isValidTeam, setIsValidTeam] = useLocalStorage("isValidTeam", "not_filled");
+  const [isValidPosition, setIsValidPosition] = useLocalStorage("isValidPosition", "not_filled");
+  const [isValidEmail, setIsValidEmail] = useLocalStorage("isValidEmail", "not_filled");
+  const [isValidPhone, setIsValidPhone] = useLocalStorage("isValidPhone", "not_filled");
+
+  const [isValid, setIsValid] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -50,37 +59,94 @@ const EmployeeInfo = () => {
     setFilteredPositions(filterPositionsByTeams);
   }, [teamId, teams]);
 
+  const validate = () => {
+    let geoRegExp = /^[ა-ჰ]{2,}$/;
+    let digRegExp = /^\+(\d{3})(\d{9})$/;
+
+    let validName = geoRegExp.test(employeeNameInputRef.current.value);
+    let validSurname = geoRegExp.test(employeeSurnameInputRef.current.value);
+    let validTeam = JSON.parse(localStorage.getItem("team")) !== "";
+    let validPosition = JSON.parse(localStorage.getItem("position")) !== "";
+    let validEmail = employeeEmailInputRef.current.value.split('@')[1] === 'redberry.ge';
+    let validPhone = digRegExp.test(employeePhoneInputRef.current.value);
+
+    { validName ? setIsValidName(true) : setIsValidName(false); }
+    { validSurname ? setIsValidSurname(true) : setIsValidSurname(false); }
+    { validTeam ? setIsValidTeam(true) : setIsValidEmail(false); }
+    { validPosition ? setIsValidPosition(true) : setIsValidPosition(false); }
+    { validEmail ? setIsValidEmail(true) : setIsValidEmail(false); }
+    { validPhone ? setIsValidPhone(true) : setIsValidPhone(false); }
+
+    if (validName && validSurname && validTeam && validPosition && validEmail && validPhone) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+  };
+
   return (
     isLoading && !filterPositionsByTeams ? "loading" :
       <div className="w-8/12 mx-auto bg-white rounded-lg drop-shadow-2xl">
-        <form className="w-8/12 mx-auto py-16">
+        <form onSubmit={submitHandler} className="w-8/12 mx-auto py-16">
           <div className="flex justify-evenly">
             <div className="mr-10">
-              <label htmlFor="first-name" className="font-semibold">სახელი</label>
+              <label
+                htmlFor="first-name"
+                className={`
+                  ${!isValidName ? "text-[#E52F2F]" : ""} font-semibold 
+                `}>
+                სახელი
+              </label>
               <input
+                required
                 type="text"
                 id="first-name"
                 placeholder="გრიშა"
                 value={name}
                 ref={employeeNameInputRef}
                 onChange={(e) => setName(e.target.value)}
-                className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]" />
-              <span className="text-sm text-[#2e2e2e]">
+                className={`
+                  ${!isValidName ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                  my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff]  focus:bg-[#f3f4ff]
+                `} />
+              <span
+                className={`
+                  ${!isValidName ? "text-[#E52F2F]" : ""} 
+                  text-sm text-[#2e2e2e]
+                `}>
                 მინიმუმ 2 სიმბოლო, ქართული ასოები
               </span>
             </div>
 
             <div className="ml-10">
-              <label htmlFor="surname" className="font-semibold">გვარი</label>
+              <label
+                htmlFor="surname"
+                className={`
+                  ${!isValidSurname ? "text-[#E52F2F]" : ""} font-semibold 
+                `}>
+                გვარი
+              </label>
               <input
+                required
                 type="text"
                 id="surname"
                 placeholder="ბაგრატიონი"
                 value={surname}
                 ref={employeeSurnameInputRef}
                 onChange={(e) => setSurname(e.target.value)}
-                className="my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
-              <span className="text-sm text-[#2e2e2e]">
+                className={`
+                  ${!isValidSurname ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""}  
+                  my-1 p-2 text-sm w-96 h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]
+                `} />
+              <span
+                className={`
+                  ${!isValidSurname ? "text-[#E52F2F]" : ""} 
+                  text-sm text-[#2e2e2e]
+                `}>
                 მინიმუმ 2 სიმბოლო, ქართული ასოები
               </span>
             </div>
@@ -103,38 +169,67 @@ const EmployeeInfo = () => {
           />
 
           <div className="my-8">
-            <label htmlFor="email" className="font-semibold">მეილი</label>
+            <label
+              htmlFor="email"
+              className={`
+                  ${!isValidEmail ? "text-[#E52F2F]" : ""} font-semibold 
+              `}>
+              მეილი
+            </label>
             <input
+              required
               type="email"
               id="email"
               placeholder="grish666@redberry.ge"
               value={email}
               ref={employeeEmailInputRef}
               onChange={(e) => setEmail(e.target.value)}
-              className="my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
-            <span className="text-sm text-[#2e2e2e]">
+              className={`
+                ${!isValidEmail ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]
+              `} />
+            <span
+              className={`
+                  ${!isValidEmail && isValid ? "text-[#E52F2F]" : ""} 
+                  text-sm text-[#2e2e2e]
+              `}>
               უნდა მთავრდებოდეს @redberry.ge-ით
             </span>
           </div>
 
           <div className="my-8">
-            <label htmlFor="phone" className="font-semibold">
+            <label
+              htmlFor="phone"
+              className={`
+                  ${!isValidPhone ? "text-[#E52F2F]" : ""} font-semibold 
+              `}>
               ტელეფონის ნომერი
             </label>
             <input
+              required
               type="text"
               id="phone"
               placeholder="+995 598 00 07 01"
               value={phone}
               ref={employeePhoneInputRef}
               onChange={(e) => setPhone(e.target.value)}
-              className="my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]" />
-            <span className="text-sm text-[#2e2e2e]">
+              className={`
+                ${!isValidPhone ? "border-[#E52F2F] focus:border-[#E52F2F] focus:bg-white" : ""} 
+                my-1 p-2 text-sm w-full h-12 border-solid border-2 border-[#bddbef] rounded-lg focus:outline-none focus:border-[#88afff] focus:bg-[#f3f4ff]
+              `} />
+            <span
+              className={`
+                  ${!isValidPhone ? "text-[#E52F2F]" : ""} 
+                  text-sm text-[#2e2e2e]
+              `}>
               უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს
             </span>
           </div>
 
-          <NextButton destination="/add-info/laptop-info" text="შემდეგი" />
+          {isValid && (<Navigate to="/add-info/laptop-info" />)}
+          <NextButton
+            text="შემდეგი"
+            validate={validate} />
         </form >
       </div >
   );
