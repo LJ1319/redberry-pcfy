@@ -159,7 +159,10 @@ const LaptopInfo = () => {
           "Content-Type": "multipart/form-data"
         }
       });
-      if (resp.status === 200) { setIsRecorded(true); }
+      if (resp.status === 200) {
+        setIsRecorded(true);
+        localStorage.clear();
+      }
     } catch (error) {
       console.log(error);
     }
