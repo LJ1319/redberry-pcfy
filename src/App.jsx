@@ -9,6 +9,7 @@ import SuccessPage from "./pages/SuccessPage";
 import Laptops from "./pages/LaptopsPage";
 import Laptop from "./pages/LaptopPage";
 import ErrorPage from "./pages/ErrorPage";
+import LaptopsList from "./components/LaptopsPage/LaptopsList";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
 
       <Route path="success" element={<SuccessPage />} />
       <Route path="laptops" element={<Laptops />} >
+        <Route index element={<LaptopsList />} />
         <Route path=":laptopId" element={<Laptop />} />
       </Route>
 

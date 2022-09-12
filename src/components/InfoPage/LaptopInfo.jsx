@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { Icon } from '@iconify-icon/react';
 
 import fetch from '../../axios/custom';
-import { formData } from "../../formData";
 import { useLocalStorage } from "../../useLocalStorage";
+import { formData } from "../../formData";
 
 import CustomSelect from "../layout/CustomSelect";
 import BackButton from "./BackButton";
@@ -12,7 +12,6 @@ import SaveButton from "./SaveButton";
 
 import Done from "../../assets/img/done.svg";
 import Warning from "../../assets/img/warning.svg";
-import axios from "axios";
 
 const LaptopInfo = () => {
   const [laptopName, setLaptopName] = useLocalStorage("laptop_name", "");
@@ -128,10 +127,6 @@ const LaptopInfo = () => {
     if (isValidImage)
       data.append("laptop_image", image);
 
-    for (const pair of data.entries()) {
-      console.log(pair);
-    }
-
     const fullData = {
       name: data.get("name"),
       surname: data.get("surname"),
@@ -168,7 +163,6 @@ const LaptopInfo = () => {
     }
 
   };
-
   return (
     <div className="w-8/12 mx-auto bg-white rounded-lg drop-shadow-2xl">
       <form onSubmit={submitHandler} className="w-8/12 mx-auto py-16">

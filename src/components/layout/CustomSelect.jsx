@@ -3,7 +3,7 @@ import ArrowDown from '../../assets/img/arrowdown.svg';
 import { useLocalStorage } from "../../useLocalStorage";
 
 const Select = (
-  { data, text, name, changeTeamId, teamId, changePositionId, changePositionTeamId, positionTeamId, changeBrandId, changeCpu, changeCpuName }
+  { data, text, name, changeTeamId, teamId, changePositionId, changePositionTeamId, positionTeamId, changeBrandId, changeCpu }
 ) => {
   const node = useRef();
 
