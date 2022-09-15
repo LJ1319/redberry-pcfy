@@ -1,8 +1,10 @@
 import NavBackButton from "../layout/NavBackButton";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const LaptopsNavbar = () => {
   let location = useLocation();
+  let { laptopId } = useParams();
+
   let destination;
   let text;
 
@@ -11,8 +13,8 @@ const LaptopsNavbar = () => {
       destination = "/";
       text = "ჩანაწერების სია";
       break;
-    case "/laptops/":
-      destination = "/";
+    case `/laptops/${laptopId}`:
+      destination = "/laptops";
       text = "ლეპტოპის ინფო";
       break;
     default:
