@@ -16,7 +16,6 @@ const LaptopPage = () => {
   const [position, setPosition] = useState("");
 
   const [brand, setBrand] = useState("");
-  // const [cpus, setCPUs] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,7 +28,6 @@ const LaptopPage = () => {
       const positionsData = await fetch("/positions");
 
       const brandsData = await fetch("/brands");
-      // const cpusData = await fetch("/cpus");
 
       setUserData(respData.data.data.user);
       setLaptopData(respData.data.data.laptop);
@@ -43,12 +41,9 @@ const LaptopPage = () => {
       const brand = brandsData.data.data.filter((brand) => respData.data.data.laptop.brand_id === brand.id
       );
 
-
       setTeam(team[0].name);
       setPosition(position[0].name);
       setBrand(brand[0].name);
-
-      // setCPUs(cpusData.data.data);
 
       setIsLoading(false);
     } catch (error) {
@@ -59,14 +54,6 @@ const LaptopPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.log(userData);
-  // console.log(laptopData);
-  // console.log(team);
-  // console.log(positions);
-  // console.log(brands);
-  // console.log(cpus)
-
 
   return (
     <div className="mx-auto w-8/12">
@@ -107,6 +94,82 @@ const LaptopPage = () => {
             ტელ. ნომერი:
             <span className="font-normal text-[#797979]">
               {userData.phone_number}
+            </span>
+          </h3>
+        </div>
+      </div>
+
+      <div className="mx-auto flex justify-around border-b-2 pb-16">
+        <div className="mt-12 w-96">
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            ლეპტოპს სახელი:
+            <span className="font-normal text-[#797979]">
+              {laptopData.name}
+            </span>
+          </h3>
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            ლეპტოპის ბრენდი:
+            <span className="font-normal text-[#797979]">
+              {brand}
+            </span>
+          </h3>
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            RAM:
+            <span className="font-normal text-[#797979]">
+              {laptopData.ram}
+            </span>
+          </h3>
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            მეხსიერების ტიპი:
+            <span className="font-normal text-[#797979]">
+              {laptopData.hard_drive_type}
+            </span>
+          </h3>
+        </div>
+
+        <div className="my-auto w-96">
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            CPU:
+            <span className="font-normal text-[#797979]">
+              {laptopData.cpu.name}
+            </span>
+          </h3>
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            CPU-ს ბირთვი:
+            <span className="font-normal text-[#797979]">
+              {laptopData.cpu.cores}
+            </span>
+          </h3>
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            CPU-ს ნაკადი:
+            <span className="font-normal text-[#797979]">
+              {laptopData.cpu.threads}
+            </span>
+          </h3>
+        </div>
+      </div>
+
+      <div className="mx-auto flex justify-around pb-16">
+        <div className="mt-12 w-96">
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            ლეპტოპის მდგომარეობა:
+            <span className="font-normal text-[#797979]">
+              {laptopData.state}
+            </span>
+          </h3>
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            ლეპტოპის ფასი:
+            <span className="font-normal text-[#797979]">
+              {laptopData.price}
+            </span>
+          </h3>
+        </div>
+
+        <div className="my-auto w-96">
+          <h3 className="font-semibold text-xl flex justify-between my-4">
+            შეძენის რიცხვი:
+            <span className="font-normal text-[#797979]">
+              {laptopData.purchase_date}
             </span>
           </h3>
         </div>
