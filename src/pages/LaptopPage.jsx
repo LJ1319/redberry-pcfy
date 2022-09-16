@@ -45,7 +45,6 @@ const LaptopPage = () => {
       setTeam(team[0].name);
       setPosition(position[0].name);
       setBrand(brand[0].name);
-
       setCpu(respData.data.data.laptop.cpu);
 
       setIsLoading(false);
@@ -156,10 +155,13 @@ const LaptopPage = () => {
         <div className="mt-12 w-96">
           <h3 className="font-semibold text-xl flex justify-between my-4">
             ლეპტოპის მდგომარეობა:
-            <span className="font-normal text-[#797979]">
-              {laptopData.state}
-            </span>
+            {!isLoading &&
+              <span className="font-normal text-[#797979]">
+                {laptopData.state === "new" ? "ახალი" : "მეორადი"}
+              </span>
+            }
           </h3>
+
           <h3 className="font-semibold text-xl flex justify-between my-4">
             ლეპტოპის ფასი:
             <span className="font-normal text-[#797979]">
