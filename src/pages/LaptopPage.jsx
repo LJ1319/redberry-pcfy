@@ -16,6 +16,7 @@ const LaptopPage = () => {
   const [position, setPosition] = useState("");
 
   const [brand, setBrand] = useState("");
+  const [cpu, setCpu] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,6 +45,8 @@ const LaptopPage = () => {
       setTeam(team[0].name);
       setPosition(position[0].name);
       setBrand(brand[0].name);
+
+      setCpu(respData.data.data.laptop.cpu);
 
       setIsLoading(false);
     } catch (error) {
@@ -131,19 +134,19 @@ const LaptopPage = () => {
           <h3 className="font-semibold text-xl flex justify-between my-4">
             CPU:
             <span className="font-normal text-[#797979]">
-              {laptopData.cpu.name}
+              {cpu.name}
             </span>
           </h3>
           <h3 className="font-semibold text-xl flex justify-between my-4">
             CPU-ს ბირთვი:
             <span className="font-normal text-[#797979]">
-              {laptopData.cpu.cores}
+              {cpu.cores}
             </span>
           </h3>
           <h3 className="font-semibold text-xl flex justify-between my-4">
             CPU-ს ნაკადი:
             <span className="font-normal text-[#797979]">
-              {laptopData.cpu.threads}
+              {cpu.threads}
             </span>
           </h3>
         </div>
