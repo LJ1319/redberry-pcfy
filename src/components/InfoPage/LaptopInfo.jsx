@@ -26,8 +26,8 @@ const LaptopInfo = () => {
   const [laptopCondition, setLaptopCondition] = useLocalStorage("laptop_condition", "");
 
   const [image, setImage] = useState("");
-  const [brands, setBrands] = useState("");
-  const [cpus, setCPUs] = useState("");
+  const [brands, setBrands] = useState([]);
+  const [cpus, setCPUs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const laptopNameInputRef = useRef();

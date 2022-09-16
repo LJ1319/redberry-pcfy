@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import fetch from "../../axios/custom";
 
-
 const LaptopsList = () => {
   const token = "37f4d5d4377097575b0104f8709ad37d";
   const URI = "https://pcfy.redberryinternship.ge/";
@@ -35,7 +34,7 @@ const LaptopsList = () => {
       {userData.map((data) => {
         return (
           <div
-            className="mx-auto h-52 w-11/12 grid grid-cols-3 col-span-1 p-2 px-2 text-left border shadow-xl rounded-xl mb-6 bg-[#EAFAFF]"
+            className="mx-auto h-52 w-11/12 grid grid-cols-3 col-span-1 p-2 px-2 text-left border border-[#AED1EA] rounded-xl mb-6 bg-[#EAFAFF]"
             key={data.laptop.id}
           >
             <img
