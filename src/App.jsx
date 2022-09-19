@@ -22,6 +22,7 @@ const App = () => {
       </Route>
 
       <Route path="success" element={<SuccessPage />} />
+
       <Route path="laptops" element={<Laptops />} >
         <Route index element={<LaptopsList />} />
         <Route path=":laptopId" element={<Laptop />} />

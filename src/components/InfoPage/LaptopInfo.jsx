@@ -51,7 +51,7 @@ const LaptopInfo = () => {
   const [isValidLaptopPrice, setIsValidLaptopPrice] = useLocalStorage("isValidLaptopPrice", "not_filled");
   const [isValidLaptopCondition, setIsValidLaptopCondition] = useLocalStorage("isValidLaptopCondition", "not_filled");
 
-  const [isValid, setIsValid] = useState(false);
+  const [isValidLaptopInfo, setIsValidLaptopInfo] = useLocalStorage("isValidLaptopInfo", false);
   const [isRecorded, setIsRecorded] = useState(false);
 
   const handleImageChange = (event) => {
@@ -113,9 +113,9 @@ const LaptopInfo = () => {
     validLaptopCondition ? setIsValidLaptopCondition(true) : setIsValidLaptopCondition(false);
 
     if (validImage && validLaptopName && validBrand && validCpu && validCpuCores && validCpuThreads && validRam && validMemoryType && validPurchaseDate && validLaptopPrice && validLaptopCondition) {
-      setIsValid(true);
+      setIsValidLaptopInfo(true);
     } else {
-      setIsValid(false);
+      setIsValidLaptopInfo(false);
     }
 
   };
@@ -455,7 +455,7 @@ const LaptopInfo = () => {
         <div className="flex justify-between">
           <BackButton destination="/add-info/employee-info" text="უკან" />
 
-          {isRecorded && (<Navigate to="/success" />)}
+          {isRecorded && (<Navigate to="success" />)}
           <SaveButton
             text="დამახსოვრება"
             validate={validate} />

@@ -34,7 +34,7 @@ const EmployeeInfo = () => {
   const [isValidEmail, setIsValidEmail] = useLocalStorage("isValidEmail", "not_filled");
   const [isValidPhone, setIsValidPhone] = useLocalStorage("isValidPhone", "not_filled");
 
-  const [isValid, setIsValid] = useState(false);
+  const [isValidEmployeeInfo, setIsValidEmployeeInfo] = useLocalStorage("isValidEmployeeInfo", false);
 
   const fetchData = async () => {
     try {
@@ -79,9 +79,9 @@ const EmployeeInfo = () => {
     validPhone ? setIsValidPhone(true) : setIsValidPhone(false);
 
     if (validName && validSurname && validTeam && validPosition && validEmail && validPhone) {
-      setIsValid(true);
+      setIsValidEmployeeInfo(true);
     } else {
-      setIsValid(false);
+      setIsValidEmployeeInfo(false);
     }
   };
 
@@ -192,7 +192,7 @@ const EmployeeInfo = () => {
               `} />
             <span
               className={`
-                  ${!isValidEmail && isValid ? "text-redberryRed" : ""} 
+                  ${!isValidEmail ? "text-redberryRed" : ""} 
                   text-sm text-[#2e2e2e]
               `}>
               უნდა მთავრდებოდეს @redberry.ge-ით
@@ -228,7 +228,7 @@ const EmployeeInfo = () => {
             </span>
           </div>
 
-          {isValid && (<Navigate to="/add-info/laptop-info" />)}
+          {isValidEmployeeInfo && (<Navigate to="/add-info/laptop-info" />)}
           <NextButton
             text="შემდეგი"
             validate={validate} />
